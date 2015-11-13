@@ -38,13 +38,6 @@ class Product extends Timestampable
     private $description;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updatedAt", type="datetime")
-     */
-    private $updatedAt;
-
-    /**
      * @var Vendor
      *
      * @ORM\ManyToOne(targetEntity="Vendor", inversedBy="Product")
@@ -110,30 +103,6 @@ class Product extends Timestampable
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Product
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**
