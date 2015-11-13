@@ -4,6 +4,7 @@ namespace Bundles\Product\ModelBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Vendor
@@ -30,6 +31,14 @@ class Vendor extends Timestampable
     private $name;
 
     /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"}, unique=true)
+     * @ORM\Column(length=255)
+     */
+    private $slug;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Product", mappedBy="vendor", cascade={"remove"})
@@ -41,7 +50,6 @@ class Vendor extends Timestampable
      */
     public function __construct()
     {
-        parent::__construct();
         $this->products = new ArrayCollection();
     }
 
@@ -80,7 +88,29 @@ class Vendor extends Timestampable
         return $this->name;
     }
 
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Vendor
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
 
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 
     /**
      * Add product

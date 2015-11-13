@@ -2,7 +2,9 @@
 
 namespace Bundles\Product\ModelBundle\Entity;
 
+use Doctrine\ORM\Mapping\MappedSuperclass;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Timestampable to define created behavior
@@ -16,17 +18,10 @@ abstract class Timestampable
     /**
      * @var \DateTime
      *
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
-
-    /**
-     * Construct
-     */
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-    }
 
     /**
      * Set createdAt
