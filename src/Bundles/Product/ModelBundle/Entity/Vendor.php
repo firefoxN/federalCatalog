@@ -39,6 +39,13 @@ class Vendor extends Timestampable
     private $slug;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     */
+    private $description;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Product", mappedBy="vendor", cascade={"remove"})
@@ -110,6 +117,30 @@ class Vendor extends Timestampable
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Vendor
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
