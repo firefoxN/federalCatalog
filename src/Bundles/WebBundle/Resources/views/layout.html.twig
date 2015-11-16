@@ -1,0 +1,140 @@
+{% extends "::base.html.twig" %}
+{% block stylesheets %}
+    {% stylesheets '@bootstrap_css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    {% block styles %}{% endblock %}
+
+    <link rel="stylesheet" href="{{ asset('bundles/web/css/main.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    <!-- Подложка с флагом -->
+    <div class='left-back'></div>
+    <div class='right-back'></div>
+    <!-- Подложка с флагом -->
+
+    <!-- контейнер -->
+    <div class="container">
+        <!-- голубая полоска в шапке -->
+        <div class="blue-line"></div>
+        <!-- голубая полоска в шапке -->
+        <header class="row">
+            <!-- Логотип и название -->
+            <div class="col-md-4 col-sm-5 col-xs-12 logo-xs-inline">
+                <img src="{{ asset('bundles/web/images/logo.png') }}" class="logo">
+                <p class="headline">
+                    <span class="red">Федеральный</span><br>
+                    <span class="dark-blue">Каталог</span>
+                </p>
+            </div>
+            <!-- /Логотип и название -->
+
+            <!-- телефон и почта -->
+            <div class="col-md-5 col-sm-4 col-xs-12 contact-xs-inline">
+                <div class="row">
+                    <!-- телефон -->
+                    <div class="col-md-6 col-sm-12 col-xs-6 xs-100">
+                        <div class="phone-div">
+                            <span class="dark-blue phone"><span class="phone-icon"></span>8 (495) 234-54-32</span>
+                        </div>
+                    </div>
+                    <!-- /телефон -->
+
+                    <!-- почта -->
+                    <div class="col-md-6 col-sm-12 col-xs-6 xs-100">
+                        <div class="email-div">
+                            <span class="dark-blue email"><span class="mail-icon"></span>info@federalcatalog.ru</span>
+                        </div>
+                    </div>
+                    <!-- /почта -->
+                </div>
+            </div>
+            <!-- /телефон и почта -->
+
+            <!-- вход/регистрация -->
+            <div class="col-md-3 col-sm-3 col-xs-12 buttons">
+                <div class="enter-buttons">
+                    <div class="enter dark-blue">Вход</div>
+                    <div class="reg">Регистрация</div>
+                </div>
+            </div>
+            <!-- /вход/регистрация -->
+        </header>
+        <div class="row">
+            <div class="col-md-12 search-box">
+                <form role="form" class="form-inline form-search">
+                    <input type="text" class="form-control input-search" placeholder="Поиск...">
+                    <input type="submit" class="btn btn-orange" value="Найти&nbsp&nbsp&nbsp&nbsp&nbsp">
+                    <!--<span class="input-group-btn">
+                        <input type="submit" class="btn btn-orange" value="Найти&nbsp&nbsp&nbsp&nbsp&nbsp">
+                    </span>-->
+                </form>
+            </div>
+        </div>
+
+        {% block bundleContent %}{% endblock %}
+    </div>
+	<!-- контеинер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 logo-footer">
+                    <img src="{{ asset('bundles/web/images/logo.png') }}">
+                </div>
+                <div class="col-md-10 other">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-1">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>О каталоге</h5>
+                                    <ul class="footer-menu">
+                                        <li class="list-footer-menu-item">
+                                            <a href="#">Участник проекта</a>
+                                        </li>
+                                        <li class="list-footer-menu-item">
+                                            <a href="#">Правовая база</a>
+                                        </li>
+                                        <li class="list-footer-menu-item">
+                                            <a href="#">Новости</a>
+                                        </li>
+                                        <li class="list-footer-menu-item">
+                                            <a href="#">Контакты</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Помощь</h5>
+                                    <ul class="footer-menu">
+                                        <li class="list-footer-menu-item">
+                                            <a href="#">Как пользоваться каталогом</a>
+                                        </li>
+                                        <li class="list-footer-menu-item">
+                                            <a href="#">Партнёрам</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="footer-info">
+                                <div class="adress">
+                                    <span class="adress-icon"></span>Ленинский проспект, д.9, г. Москва, В-49, ГСП-1Б 119991
+                                </div>
+                                <div class="phone-footer">
+                                    <span class="phone-icon"></span>
+                                    <div class="phones">
+                                        <div>8 (495) 234-54-32,</div>
+                                        <div>8 (495) 234-54-32</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}

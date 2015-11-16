@@ -1,0 +1,4 @@
+bundles:
+  category:
+    core:
+      home: 'Главная'

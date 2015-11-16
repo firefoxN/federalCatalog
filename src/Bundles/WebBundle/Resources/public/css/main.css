@@ -1,0 +1,384 @@
+/*Шрифты*/
+@font-face {
+    font-family: 'a_FuturaRoundDemi';
+    src: url('../fonts/a_futurarounddemi/AFuturaRoundDemi.eot?') format('eot'),
+    url('../fonts/a_futurarounddemi/AFuturaRoundDemi.woff') format('woff'),
+    url('../fonts/a_futurarounddemi/a_FuturaRoundDemi.TTF')  format('truetype'),
+    url('../fonts/a_futurarounddemi/AFuturaRoundDemi.svg#svgFontName') format('svg');
+}
+
+@font-face {
+    font-family: 'HeliosCondLight';
+    src: url('../fonts/heliosCondLight/HeliosCondLight.eot?') format('eot'),
+    url('../fonts/heliosCondLight/HeliosCondLight.woff') format('woff'),
+    url('../fonts/heliosCondLight/Helios-Cond-Light Regular.ttf')  format('truetype'),
+    url('../fonts/heliosCondLight/HeliosCondLight.svg#svgFontName') format('svg');
+}
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome/FontAwesome.eot?') format('eot'),
+    url('../fonts/fontawesome/FontAwesome.woff') format('woff'),
+    url('../fonts/fontawesome/fontawesome-webfont.ttf')  format('truetype'),
+    url('../fonts/fontawesome/FontAwesome.svg#svgFontName') format('svg');
+}
+
+@font-face {
+    font-family: 'Calibri';
+    src: url('../fonts/calibri/Calibri.eot?') format('eot'),
+    url('../fonts/calibri/Calibri.woff') format('woff'),
+    url('../fonts/calibri/calibri.ttf')  format('truetype'),
+    url('../fonts/calibri/Calibri.svg#svgFontName') format('svg');
+}
+
+/*Общие стили*/
+body {
+    font-family: Calibri;
+}
+
+a {
+    color: #0a4466;
+}
+.red {
+    color: #f25e08;
+}
+
+.dark-blue {
+    color: #0a4466;
+}
+
+.btn-orange {
+    background-color: #f25e08;
+}
+
+.without-padding-lft-rght {
+    padding-left: 0;
+    padding-right: 0;
+}
+/**********************/
+
+/*Подложка и боди*/
+div.container {
+    background-color: white;
+    border: 1px solid #E7E7E7;
+    border-bottom: none;
+}
+
+div.left-back {
+    background-image: url(../images/flag.png);
+    background-position: top left;
+    height: 455px;
+    width:50%;
+    float:left;
+    position: absolute;
+    z-index:-1;
+}
+
+div.right-back {
+    background-image: url(../images/flag.png);
+    background-position: right top;
+    height: 455px;
+    width:50%;
+    float:right;
+    right: 0;
+    position: absolute;
+    z-index:-1;
+}
+/**********************/
+
+/*Шапка*/
+div.blue-line {
+    background: url(../images/top-blue-line.png) repeat-x;
+    height: 5px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+header {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+img.logo {
+    float: left;
+    margin-right: 14px;
+}
+
+p.headline {
+    font-family: 'a_FuturaRoundDemi';
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.phone-div, .email-div {
+    line-height: 47px;
+}
+
+@media (min-width: 1200px) {
+    .phone-div {
+        padding-left: 25%;
+        white-space: nowrap;
+    }
+    .email-div {
+        padding-left: 25%;
+        white-space: nowrap;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {}
+@media (min-width: 768px) and (max-width: 991px) {}
+@media (min-width: 600px) and (max-width: 760px) {
+    .logo-xs-inline {
+        width: 45%
+    }
+    .contact-xs-inline {
+        width: 55%;
+    }
+}
+@media (max-width: 767px) {
+    .phone-div,
+    .email-div {
+        float: right;
+        white-space: nowrap;
+        padding-right: 15px;
+    }
+}
+@media (max-width: 351px) {
+    div.xs-100 {
+        width:100%;
+    }
+}
+
+.phone, .email {
+    font-size: 18px;
+    font-family: HeliosCondLight;
+}
+
+.phone-icon:before,
+.mail-icon:before {
+    font-family: 'FontAwesome';
+    color: #0a4466;
+    font-size: 18px;
+}
+
+.phone-icon:before {
+    content: '\F095';
+}
+
+.mail-icon:before {
+    content: '\F003';
+}
+
+.phone-icon,
+.mail-icon {
+    margin-right: 6%;
+}
+
+div.enter-buttons {
+    width: 206px;
+    height: 30px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+    margin-top: 12px;
+    float: right;
+}
+
+.enter,
+.reg {
+    font-family: 'Calibri';
+    font-size: 19px;
+    text-align: center;
+    line-height: 27px;
+    height: 30px;
+}
+
+.enter {
+    background: #add7ff;
+    width: 78px;
+    border-radius: 4px 0 0 4px;
+    float: left;
+}
+
+.reg {
+    background: url(../images/reg.png);
+    width: 128px;
+    border-radius: 0 4px 4px 0;
+    float: right;
+    color: white;
+}
+
+/**********************/
+
+/*Поиск*/
+.search-box {
+    background-image: url(../images/search.png);
+    height: 63px;
+}
+
+.form-search {
+    padding-top:10px;
+    text-align: center;
+}
+
+.form-search .input-search {
+    width: 50%;
+    display: inline-block;
+}
+
+.form-search .form-control {
+    height: 41px;
+    border-radius: 4px 0 0 4px;
+}
+
+.form-search .input-group-btn {
+    margin-left:-5px;
+}
+
+.form-search .btn-orange {
+    background-image: url(../images/search-ok.png);
+    background-repeat: no-repeat;
+    background-position: 87% 50%;
+    height: 41px;
+    color: white;
+    font-family: 'Calibri';
+    font-size: 19px;
+    display: inline;
+    padding-right: 29px;
+    padding-left: 24px;
+    margin-left: -5px;
+    border-radius: 0 4px 4px 0;
+}
+
+/*.form-search span.input-group-btn {
+	display: inline;
+}*/
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+@media (min-width: 768px) and (max-width: 991px) {}
+@media (min-width: 600px) and (max-width: 760px) {
+}
+@media (max-width: 767px) {
+    /*.form-search .btn-orange {
+        margin-top: -3px;
+    }*/
+}
+@media (max-width: 351px) {
+
+}
+/**********************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*********** BUTTONS ***********/
+.carousel-button-left a, .carousel-button-right a{
+    width: 27px;
+    height: 26px;
+    position: relative;
+    top: 50px;
+    cursor: pointer;
+    text-decoration:none;
+}
+.carousel-button-left a{
+    float: left;
+    background: url(../images/blue-arrow-left.png) no-repeat;
+}
+.carousel-button-right a{
+    float: right;
+    background: url(../images/blue-arrow-right.png) no-repeat;
+}
+/*********************************/
+
+
+/******FOOTER******/
+footer {
+    margin-bottom: 20px;
+    margin-top: 0;
+    color: #add7ff;
+}
+
+footer .container {
+    border: 1px solid #E7E7E7;
+    border-top: none;
+}
+
+footer,
+.footer-menu a {
+    color: #add7ff;
+    font-size: 16px;
+}
+
+.logo-footer {
+    background: url(../images/bg-logo-footer.png);
+    padding-top: 43px;
+    padding-bottom: 42px;
+}
+
+.logo-footer img {
+    margin: 0 auto;
+    width: 81px;
+    display: block;
+}
+
+.other {
+    background: url(../images/other-bg.png);
+}
+
+.footer-menu {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-menu li a {
+    font-size: 16px;
+}
+
+footer h5 {
+    color: white;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.footer-info {
+    margin-top: 10px;
+}
+
+.footer-info .phone-icon {
+    float: left;
+}
+
+.footer-info .phone-icon:before {
+    color: white;
+}
+
+.footer-info .phone-footer .phones {
+    display: inline;
+}
+
+.adress-icon {
+    margin-right: 6%;
+}
+
+.adress-icon:before {
+    font-family: FontAwesome;
+    content: '\F041';
+    font-size: 18px;
+    color: white;
+}
+/******************/

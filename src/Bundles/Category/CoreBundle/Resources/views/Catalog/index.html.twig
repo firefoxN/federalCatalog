@@ -1,7 +1,9 @@
-{% extends "::base.html.twig" %}
+{% extends "WebBundle::layout.html.twig" %}
 
-{% block title %}CategoryCoreBundle:Catalog:index{% endblock %}
+{% block title %}
+    {{ 'bundles.category.core.home' | trans }}
+{% endblock %}
 
-{% block body %}
+{% block bundleContent %}
 <h1>Welcome to the Catalog:index page</h1>
 {% endblock %}
