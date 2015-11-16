@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class ProductController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/products")
      * @Template()
      *
      * @return array

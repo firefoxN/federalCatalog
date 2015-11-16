@@ -1,25 +1,25 @@
 <?php
 
-namespace Bundles\Product\CoreBundle\Tests\Controller;
+namespace Bundles\Category\CoreBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
- * Class ProductControllerTest
+ * Class CatalogControllerTest
  *
- * @package Bundles\Product\CoreBundle\Tests\Controller
+ * @package Bundles\Category\CoreBundle\Tests\Controller
  */
-class ProductControllerTest extends WebTestCase
+class CatalogControllerTest extends WebTestCase
 {
     /**
-     * tests product index
+     * Test catalogs index
      */
     public function testIndex()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/products');
-
+        $crawler = $client->request('GET', '/');
+        
         $this->assertTrue($client->getResponse()->isSuccessful(), 'The response was not successfull');
     }
 

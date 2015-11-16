@@ -34,7 +34,7 @@ class Vendor extends Timestampable
      * @var string
      *
      * @Gedmo\Slug(fields={"name"}, unique=true)
-     * @ORM\Column(length=255)
+     * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
 
