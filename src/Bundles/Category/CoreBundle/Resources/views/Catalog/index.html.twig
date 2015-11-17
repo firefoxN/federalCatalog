@@ -5,5 +5,70 @@
 {% endblock %}
 
 {% block bundleContent %}
-<h1>Welcome to the Catalog:index page</h1>
+    <!-- Меню -->
+    <div class="row">
+        <nav class="navbar navbar-default main-menu" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills" role="tablist">
+                        {% for root in roots %}
+                            <li>
+                                <a href="#tab_0{{ root.id }}" role="tab" data-toggle="pill">
+                                    {{ root.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Tab panes -->
+        <div class="tab-content subMainMenu">
+            {% for key,subMenuValues in subMenuDatas %}
+                {% set prevLvl = 1 %}
+                <div class="tab-pane" id="tab_0{{ key }}">
+                    <!-- строка подменю -->
+                    <div class="row rowSubMenu">
+                        <div>
+                            {% for subMenuData in subMenuValues %}
+                                {% if prevLvl != subMenuData.lvl and subMenuData.lvl == 1 %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                                {% if subMenuData.lvl == 1 %}
+                                    <div class="col-md-3">
+                                        <span class="titleSubMenu">{{ subMenuData.title }}</span>
+                                        <ul class="inside-list" role="menu">
+                                {% endif %}
+                                {% if subMenuData.lvl == 2 %}
+                                    <li><a href="#">{{ subMenuData.title }}</a></li>
+                                {% endif %}
+
+                                {% set prevLvl = subMenuData.lvl %}
+
+                                {% if loop.last %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- конец строка подменю -->
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- /Меню -->
+    <div class="row"></div>
 {% endblock %}

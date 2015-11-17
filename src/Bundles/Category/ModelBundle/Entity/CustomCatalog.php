@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @Gedmo\Tree(type="nested")
  * @ORM\Table(name="customCatalog")
  * use repository for handy tree functions
- * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\NestedTreeRepository")
+ * @ORM\Entity(repositoryClass="Bundles\Category\ModelBundle\Repository\CustomCatalogRepository")
  */
 class CustomCatalog
 {

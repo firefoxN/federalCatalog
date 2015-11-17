@@ -138,3 +138,10 @@
         </div>
     </footer>
 {% endblock %}
+{% block javascripts %}
+    {% javascripts '@jquery' '@bootstrap_js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% block jsfiles %}{% endblock %}
+{% endblock %}

@@ -25,6 +25,10 @@ class CustomCatalogFixtures extends AbstractFixture implements OrderedFixtureInt
     {
         $faker = FakerFactory::create('ru_RU');
 
+        $dishes = new CustomCatalog();
+        $dishes->setTitle('Dishes');
+        $manager->persist($dishes);
+
         $food = new CustomCatalog();
         $food->setTitle('Food');
         $manager->persist($food);
@@ -33,6 +37,11 @@ class CustomCatalogFixtures extends AbstractFixture implements OrderedFixtureInt
         $fruits->setTitle('Fruits');
         $fruits->setParent($food);
         $manager->persist($fruits);
+
+        $apple = new CustomCatalog();
+        $apple->setTitle('Apple');
+        $apple->setParent($fruits);
+        $manager->persist($apple);
 
         $vegetables = new CustomCatalog();
         $vegetables->setTitle('Vegetables');
@@ -43,6 +52,11 @@ class CustomCatalogFixtures extends AbstractFixture implements OrderedFixtureInt
         $carrots->setTitle('Carrots');
         $carrots->setParent($vegetables);
         $manager->persist($carrots);
+
+        $smallCarrots = new CustomCatalog();
+        $smallCarrots->setTitle('Small carrots');
+        $smallCarrots->setParent($carrots);
+        $manager->persist($smallCarrots);
 
         $manager->flush();
     }
