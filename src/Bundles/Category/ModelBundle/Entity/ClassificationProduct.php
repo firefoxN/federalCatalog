@@ -35,7 +35,8 @@ class ClassificationProduct
     /**
      * @var integer
      *
-     * @ORM\Column(name="classification_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Bundles\Category\ModelBundle\Model\ClassificationInterface")
+     * @ORM\JoinColumn(name="classification_id", referencedColumnName="id", nullable=false)
      * @Assert\NotBlank()
      */
     private $classification;
