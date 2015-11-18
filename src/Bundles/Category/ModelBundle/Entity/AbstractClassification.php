@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: natali
- * Date: 18.11.15
- * Time: 15:43
- */
 
 namespace Bundles\Category\ModelBundle\Entity;
 
@@ -41,19 +35,13 @@ abstract class AbstractClassification
 
     /**
      * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="ClassificationProduct", mappedBy="classification", cascade={"remove"})
      */
-    protected $classificationProducts;
+    private $products;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Bundles\Category\ModelBundle\Model\ProductInterface")
-     * @ORM\JoinTable(name="classification_product",
-     *      joinColumns={@JoinColumn(name="classification_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="product_id", referencedColumnName="id")}
-     * )
+     * @var ArrayCollection
      */
-    protected $products;
+    protected $classificationProducts;
 
     /**
      * Constructor
