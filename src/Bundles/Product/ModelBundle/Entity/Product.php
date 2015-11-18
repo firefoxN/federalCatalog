@@ -2,6 +2,7 @@
 
 namespace Bundles\Product\ModelBundle\Entity;
 
+use Bundles\Category\ModelBundle\Model\ProductInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -11,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Product extends Timestampable
+class Product extends Timestampable implements ProductInterface
 {
     /**
      * @var integer
