@@ -101,8 +101,10 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-        resolve_target_entities:
-            Bundles\Category\ModelBundle\Model\ProductInterface: Bundles\Product\ModelBundle\Entity\Product
+
+category_core:
+    entity:
+        class: Bundles\Product\ModelBundle\Entity\Product
 
 stof_doctrine_extensions:
     default_locale: ru

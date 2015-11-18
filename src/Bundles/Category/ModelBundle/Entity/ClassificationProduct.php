@@ -3,6 +3,7 @@
 namespace Bundles\Category\ModelBundle\Entity;
 
 use Bundles\Category\ModelBundle\Model\ProductInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -33,11 +34,11 @@ class ClassificationProduct
     private $product;
 
     /**
-     * @var integer
+     * @var ArrayCollection
      *
-     * @ORM\ManyToOne(targetEntity="Bundles\Category\ModelBundle\Model\ClassificationInterface")
+     * @ORM\ManyToOne(targetEntity="Bundles\Category\ModelBundle\Entity\AbstractClassification",
+     * inversedBy="classificationProducts")
      * @ORM\JoinColumn(name="classification_id", referencedColumnName="id", nullable=false)
-     * @Assert\NotBlank()
      */
     private $classification;
 
@@ -77,7 +78,7 @@ class ClassificationProduct
     /**
      * Get product
      *
-     * @return \Bundles\Product\ModelBundle\Entity\Product
+     * @return ProductInterface
      */
     public function getProduct()
     {
