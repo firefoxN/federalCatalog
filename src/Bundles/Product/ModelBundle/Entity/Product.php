@@ -5,6 +5,7 @@ namespace Bundles\Product\ModelBundle\Entity;
 use Bundles\Category\ModelBundle\Model\ProductInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Product
@@ -34,9 +35,24 @@ class Product extends Timestampable implements ProductInterface
     /**
      * @var string
      *
+     * @Gedmo\Slug(fields={"title"}, unique=true)
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+
+    /**
+     * @var
+     *
+     * @ORM\Column(name="price", type="decimal", scale=2)
+     */
+    private $price;
 
     /**
      * @var Vendor
@@ -80,6 +96,30 @@ class Product extends Timestampable implements ProductInterface
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Product
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

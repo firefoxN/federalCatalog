@@ -21,7 +21,7 @@ class CatalogControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/');
 
-        $this->assertTrue($client->getResponse()->isSuccessful(), 'The response was not successfull');
+        $this->assertTrue($client->getResponse()->isSuccessful(), 'The response was not successful');
 
         /**
          * @var NestedTreeRepository $repository

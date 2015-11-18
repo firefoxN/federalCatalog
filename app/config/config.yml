@@ -31,6 +31,12 @@ framework:
     fragments:       ~
     http_method_override: true
 
+services:
+    twig.extention.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - {name: twig.extension }
+
 
 # Twig Configuration
 twig:

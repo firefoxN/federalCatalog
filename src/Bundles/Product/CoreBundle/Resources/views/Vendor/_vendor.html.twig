@@ -1,0 +1,12 @@
+<article>
+    <header>
+        <h3><a href="#">{{ vendor.name }}</a></h3>
+    </header>
+    <p>
+        {{ vendor.description | truncate(400) }} &mdash;
+        <a href="#">
+            {{ 'bundles.product.core.readmore' | trans }} &raquo;
+        </a>
+    </p>
+</article>
+

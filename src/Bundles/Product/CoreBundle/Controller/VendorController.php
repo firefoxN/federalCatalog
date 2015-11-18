@@ -21,6 +21,10 @@ class VendorController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $vendors = $this->getDoctrine()->getRepository('ProductModelBundle:Vendor')->findAll();
+
+        return array(
+            'vendors' => $vendors,
+        );
     }
 }

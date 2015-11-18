@@ -1,1 +1,11 @@
-Hello {{ name }}!
+{% extends "WebBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ 'bundles.product.core.vendors' | trans }}
+{% endblock %}
+
+{% block bundleContent %}
+    {% for vendor in vendors %}
+        {{ include('ProductCoreBundle:Vendor:_vendor.html.twig', {vendor: vendor}) }}
+    {% endfor %}
+{% endblock %}
