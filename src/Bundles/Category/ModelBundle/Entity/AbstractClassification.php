@@ -48,7 +48,6 @@ abstract class AbstractClassification
      */
     public function __construct()
     {
-        $this->children = new ArrayCollection();
         $this->products = new ArrayCollection();
     }
 

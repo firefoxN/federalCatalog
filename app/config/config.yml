@@ -7,6 +7,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: ru
+    doctrine_resolve_class: 'Bundles\Product\ModelBundle\Entity\Product'
 
 framework:
     #esi:             ~
@@ -110,7 +111,7 @@ doctrine:
 
 category_core:
     entity:
-        class: Bundles\Product\ModelBundle\Entity\Product
+        class: %doctrine_resolve_class%
 
 stof_doctrine_extensions:
     default_locale: ru

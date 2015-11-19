@@ -43,6 +43,15 @@ class VendorRepository extends EntityRepository
         return $qb->getQuery()->getSingleResult();
     }
 
+    public function findOne()
+    {
+        $qb = $this->getQueryBuilder()
+            ->orderBy('v.id', 'asc')
+            ->setMaxResults(1);
+
+        return $qb->getQuery()->getResult();
+    }
+
     /**
      * @return QueryBuilder
      */

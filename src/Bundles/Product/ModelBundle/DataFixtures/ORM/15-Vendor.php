@@ -24,15 +24,32 @@ class Vendors extends AbstractFixture implements OrderedFixtureInterface
     {
         $faker = FakerFactory::create('ru_RU');
 
-        for ($i=0; $i<3; $i++) {
-            $vendor = new Vendor();
-            $vendor->setName($faker->company);
-            $vendor->setDescription($faker->realText(100));
+        $vendor1 = new Vendor();
+        $vendor1->setDescription($faker->realText(100));
+        $faker->seed(1111);
+        $vendor1->setName($faker->company);
 
-            $manager->persist($vendor);
-        }
+        $manager->persist($vendor1);
+
+        $vendor2 = new Vendor();
+        $vendor2->setDescription($faker->realText(100));
+        $faker->seed(1112);
+        $vendor2->setName($faker->company);
+
+        $manager->persist($vendor2);
+
+        $vendor3 = new Vendor();
+        $vendor3->setDescription($faker->realText(100));
+        $faker->seed(1113);
+        $vendor3->setName($faker->company);
+
+        $manager->persist($vendor3);
 
         $manager->flush();
+
+        $this->addReference('vendor1', $vendor1);
+        $this->addReference('vendor2', $vendor2);
+        $this->addReference('vendor3', $vendor3);
     }
 
     /**

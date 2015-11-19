@@ -23,6 +23,7 @@ class VendorController extends Controller
     public function indexAction()
     {
         //@TODO добавить пагинацию
+
         $vendors = $this->getDoctrine()->getRepository('ProductModelBundle:Vendor')->findAll();
 
         return array(
@@ -43,6 +44,8 @@ class VendorController extends Controller
      */
     public function showAction($slug)
     {
+        //@TODO Добавить изображения к поставщику
+
         $vendor = $this->getDoctrine()->getRepository('ProductModelBundle:Vendor')->findOneBy(
             [
                 'slug' => $slug,

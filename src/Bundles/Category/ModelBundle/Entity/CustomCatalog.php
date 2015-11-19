@@ -70,6 +70,15 @@ class CustomCatalog extends AbstractClassification
     protected $classificationProducts;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->children = new ArrayCollection();
+    }
+
+    /**
      * Set slug
      *
      * @param string $slug
