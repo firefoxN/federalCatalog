@@ -1,0 +1,8 @@
+parameters:
+    vendor_manager.class: Bundles\Product\CoreBundle\Services\VendorManager
+
+services:
+    vendor_manager:
+        class: %vendor_manager.class%
+        arguments:
+            - @doctrine.orm.entity_manager

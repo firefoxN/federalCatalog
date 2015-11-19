@@ -46,11 +46,7 @@ class VendorController extends Controller
     {
         //@TODO Добавить изображения к поставщику
 
-        $vendor = $this->getDoctrine()->getRepository('ProductModelBundle:Vendor')->findOneBy(
-            [
-                'slug' => $slug,
-            ]
-        );
+        $vendor = $this->getVendorManager()->findBySlug($slug);
 
         if (null === $vendor) {
             throw $this->createNotFoundException('Vendor was not found');
@@ -59,5 +55,15 @@ class VendorController extends Controller
         return array(
             'vendor' => $vendor,
         );
+    }
+
+    /**
+     * Get service "Vendor manager"
+     *
+     * @return \Bundles\Product\CoreBundle\Services\VendorManager
+     */
+    private function getVendorManager()
+    {
+        return $this->get('vendor_manager');
     }
 }
