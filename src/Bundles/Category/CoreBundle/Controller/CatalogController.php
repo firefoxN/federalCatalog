@@ -5,7 +5,7 @@ namespace Bundles\Category\CoreBundle\Controller;
 use Bundles\Category\ModelBundle\Entity\CustomCatalog;
 use Bundles\Category\ModelBundle\Repository\CustomCatalogRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
@@ -41,6 +41,19 @@ class CatalogController extends Controller
             'roots'        => $roots,
             'subMenuDatas' => $arrData,
         );
+    }
+
+    /**
+     * Show custom category page
+     *
+     * @Route("/{slug}")
+     * @Template()
+     *
+     * @return array
+     */
+    public function showCustomCategoryAction()
+    {
+
     }
 
 }

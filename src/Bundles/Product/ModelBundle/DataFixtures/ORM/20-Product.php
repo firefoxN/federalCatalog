@@ -24,34 +24,22 @@ class Products extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $faker = FakerFactory::create('ru_RU');
-//
-//        $product = new Product();
-//        $product->setTitle($faker->sentence(3));
-//        $product->setDescription($faker->realText(300));
-//        $price = $faker->randomFloat(2, 0, 200000);
-//        echo $price;
-//        $product->setPrice($price);
-//        $manager->persist($product);
+
         for ($i = 1; $i < 4; $i++) {
             for ($j = 0; $j < 10; $j++) {
                 $product = new Product();
                 $product->setTitle($faker->sentence(3));
                 $product->setDescription($faker->realText(300));
                 $product->setPrice($faker->randomFloat(2));
-
-//                if ($i == 0) {
-//                    $companyName = 'ОАО ТехЛифтАлмазТраст';
-//                } elseif ($i == 1) {
-//                    $companyName = 'ОАО ТекстильАсбоцемент';
-//                } else {
-//                    $companyName = 'ООО Теле';
-//                }
-//                $vendor = $this->getVendor($manager, $companyName);
-
+                /**
+                 * @var Vendor $vendor
+                 */
                 $vendor = $this->getReference('vendor'.$i);
                 $product->setVendor($vendor);
 
                 $manager->persist($product);
+
+                $this->addReference('product-'.$i.'-'.$j, $product);
             }
         }
 

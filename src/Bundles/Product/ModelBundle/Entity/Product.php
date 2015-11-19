@@ -58,7 +58,7 @@ class Product extends Timestampable implements ProductInterface
      * @var Vendor
      *
      * @ORM\ManyToOne(targetEntity="Vendor", inversedBy="products")
-     * @ORM\JoinColumn(name="vendor_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="vendor_id", referencedColumnName="id", nullable=false)
      * @Assert\NotBlank()
      */
     private $vendor;

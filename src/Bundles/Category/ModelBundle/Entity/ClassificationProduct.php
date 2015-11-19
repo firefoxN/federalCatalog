@@ -5,12 +5,15 @@ namespace Bundles\Category\ModelBundle\Entity;
 use Bundles\Category\ModelBundle\Model\ProductInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ClassificationProduct
  *
- * @ORM\Table()
+ * @ORM\Table(name="classification_product", uniqueConstraints={
+ *      @UniqueConstraint(columns={"product_id", "nmsps"})
+ * })
  * @ORM\Entity
  */
 class ClassificationProduct
@@ -85,29 +88,7 @@ class ClassificationProduct
         return $this->product;
     }
 
-    /**
-     * Set classification
-     *
-     * @param integer $classification
-     *
-     * @return ClassificationProduct
-     */
-    public function setClassification($classification)
-    {
-        $this->classification = $classification;
 
-        return $this;
-    }
-
-    /**
-     * Get classification
-     *
-     * @return integer
-     */
-    public function getClassification()
-    {
-        return $this->classification;
-    }
 
     /**
      * Set namespace
@@ -131,5 +112,29 @@ class ClassificationProduct
     public function getNmsps()
     {
         return $this->nmsps;
+    }
+
+    /**
+     * Set classification
+     *
+     * @param AbstractClassification $classification
+     *
+     * @return ClassificationProduct
+     */
+    public function setClassification(AbstractClassification $classification)
+    {
+        $this->classification = $classification;
+
+        return $this;
+    }
+
+    /**
+     * Get classification
+     *
+     * @return AbstractClassification
+     */
+    public function getClassification()
+    {
+        return $this->classification;
     }
 }
