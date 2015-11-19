@@ -1,0 +1,18 @@
+{% extends 'WebBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ vendor.name }}
+{% endblock %}
+
+{% block bundleContent %}
+    <article>
+        <header>
+            <h1>{{ vendor.name }}</h1>
+        </header>
+
+        <p>
+            {{ vendor.description | nl2br }}
+        </p>
+    </article>
+{% endblock %}
+

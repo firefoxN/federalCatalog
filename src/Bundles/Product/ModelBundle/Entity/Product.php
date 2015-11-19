@@ -57,7 +57,7 @@ class Product extends Timestampable implements ProductInterface
     /**
      * @var Vendor
      *
-     * @ORM\ManyToOne(targetEntity="Vendor", inversedBy="Product")
+     * @ORM\ManyToOne(targetEntity="Vendor", inversedBy="products")
      * @ORM\JoinColumn(name="vendor_id", referencedColumnName="id", nullable=false)
      * @Assert\NotBlank()
      */
@@ -168,5 +168,29 @@ class Product extends Timestampable implements ProductInterface
     public function getVendor()
     {
         return $this->vendor;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     *
+     * @return Product
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }

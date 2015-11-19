@@ -1,10 +1,10 @@
 <article>
     <header>
-        <h3><a href="#">{{ vendor.name }}</a></h3>
+        <h3><a href="{{ path('bundles_product_core_vendor_show', {slug: vendor.slug}) }}">{{ vendor.name }}</a></h3>
     </header>
     <p>
         {{ vendor.description | truncate(400) }} &mdash;
-        <a href="#">
+        <a href="{{ path('bundles_product_core_vendor_show', {slug: vendor.slug}) }}">
             {{ 'bundles.product.core.readmore' | trans }} &raquo;
         </a>
     </p>

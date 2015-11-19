@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Vendor
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Bundles\Product\ModelBundle\Repository\VendorRepository")
  */
 class Vendor extends Timestampable
 {
