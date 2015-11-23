@@ -20,6 +20,16 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new PUGX\GodfatherBundle\GodfatherBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            // Add your dependencies
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            // If you haven't already, add the storage bundle
+            // This example uses SonataDoctrineORMAdmin
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            // Then add SonataAdminBundle
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            //my own bundles
             new Bundles\Product\CoreBundle\ProductCoreBundle(),
             new Bundles\Product\ModelBundle\ProductModelBundle(),
             new Bundles\Category\CoreBundle\CategoryCoreBundle(),
