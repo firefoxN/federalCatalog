@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-xs-12">
+        {# total items count #}
+        <div class="count">
+            {{ 'bundles.category.core.list.quantitu' | trans }}
+            {{ pagination.getTotalItemCount }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    {% for article in pagination %}
+        <div class="col-md-4">
+            <div class="item-products">
+                <h3>
+                    {{ article.product.title }}
+                </h3>
+                <p>
+                    {{ 'bundles.category.core.list.on' | trans }}:
+                    <time datetime="{{ article.product.createdAt | date('c') }}">
+                        {{ article.product.createdAt | date }}
+                    </time>
+                </p>
+                <p class="text-justify">
+                    {{ article.product.description }}
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{# display navigation #}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</div>

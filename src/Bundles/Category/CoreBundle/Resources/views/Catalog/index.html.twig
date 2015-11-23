@@ -52,7 +52,11 @@
                                         <ul class="inside-list" role="menu">
                                 {% endif %}
                                 {% if subMenuData.lvl == 2 %}
-                                    <li><a href="#">{{ subMenuData.title }}</a></li>
+                                    <li>
+                                        <a href="{{ path('bundles_category_core_catalog_showcustomcategory', {slug: subMenuData.slug}) }}">
+                                            {{ subMenuData.title }}
+                                        </a>
+                                    </li>
                                 {% endif %}
 
                                 {% set prevLvl = subMenuData.lvl %}

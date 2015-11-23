@@ -43,6 +43,9 @@ class VendorRepository extends EntityRepository
         return $qb->getQuery()->getSingleResult();
     }
 
+    /**
+     * @return array
+     */
     public function findOne()
     {
         $qb = $this->getQueryBuilder()

@@ -1,0 +1,16 @@
+<div class="row">
+    {% for category in pagination %}
+        <div class="col-md-4">
+            <h3>
+                <a href="{{ path('bundles_category_core_catalog_showcustomcategory', {slug: category.slug}) }}">
+                    {{ category.title }}
+                </a>
+            </h3>
+        </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+</div>

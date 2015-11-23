@@ -1,10 +1,10 @@
-category_core:
-    resource: "@CategoryCoreBundle/Controller/"
+product_core:
+    resource: "@ProductCoreBundle/Controller/"
     type:     annotation
     prefix:   /
 
-product_core:
-    resource: "@ProductCoreBundle/Controller/"
+category_core:
+    resource: "@CategoryCoreBundle/Controller/"
     type:     annotation
     prefix:   /
 

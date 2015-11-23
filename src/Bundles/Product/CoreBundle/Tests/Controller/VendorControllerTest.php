@@ -19,7 +19,7 @@ class VendorControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/vendors');
+        $crawler = $client->request('GET', '/vendors/');
 
         $this->assertTrue($client->getResponse()->isSuccessful(), 'The response was not successful');
         $this->assertCount(3, $crawler->filter('h3'), 'There should be 3 displayed vendors');
@@ -33,7 +33,7 @@ class VendorControllerTest extends WebTestCase
         $client = static::createClient();
 
         /**
-         * @var Vendor
+         * @var Vendor $vendor
          */
         $vendor = $client->getContainer()->get('doctrine')->getRepository('ProductModelBundle:Vendor')
                 ->findFirst();

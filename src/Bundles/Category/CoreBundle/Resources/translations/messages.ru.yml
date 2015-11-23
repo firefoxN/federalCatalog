@@ -2,3 +2,6 @@ bundles:
   category:
     core:
       home: 'Главная'
+      list:
+          on: 'Создан'
+          quantitu: 'Общее количество'

@@ -63,4 +63,16 @@ class VendorManager
 
         return $products;
     }
+
+    /**
+     * Get all vendors
+     *
+     * @return array|\Bundles\Product\ModelBundle\Entity\Vendor[]
+     */
+    public function findAll()
+    {
+        $vendors = $this->em->getRepository('ProductModelBundle:Vendor')->findAll();
+
+        return $vendors;
+    }
 }

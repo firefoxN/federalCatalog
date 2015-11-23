@@ -10,12 +10,12 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class VendorController
  *
- * @package Bundles\Product\CoreBundle\Controller
+ * @Route("/vendors")
  */
 class VendorController extends Controller
 {
     /**
-     * @Route("/vendors")
+     * @Route("/")
      * @Template()
      *
      * @return array
@@ -24,7 +24,7 @@ class VendorController extends Controller
     {
         //@TODO добавить пагинацию
 
-        $vendors = $this->getDoctrine()->getRepository('ProductModelBundle:Vendor')->findAll();
+        $vendors = $this->getVendorManager()->findAll();
 
         return array(
             'vendors' => $vendors,
@@ -36,10 +36,9 @@ class VendorController extends Controller
      *
      * @param string $slug
      *
-     * @Route("/vendors/{slug}")
+     * @Route("/{slug}")
      * @Template()
      *
-     * @throws NotFoundHttpException
      * @return array
      */
     public function showAction($slug)
@@ -47,10 +46,6 @@ class VendorController extends Controller
         //@TODO Добавить изображения к поставщику
 
         $vendor = $this->getVendorManager()->findBySlug($slug);
-
-        if (null === $vendor) {
-            throw $this->createNotFoundException('Vendor was not found');
-        }
 
         return array(
             'vendor' => $vendor,

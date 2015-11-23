@@ -46,7 +46,7 @@ class CatalogProductRel extends AbstractFixture implements OrderedFixtureInterfa
              */
             $product = $this->getReference('product-1-'.$j);
             $classificationProduct1->setNmsps($nmsps);
-            $classificationProduct1->setClassification($customCategory1);
+            $classificationProduct1->setClassification($customCategory1->getId());
             $classificationProduct1->setProduct($product);
             $manager->persist($classificationProduct1);
         }
@@ -65,7 +65,7 @@ class CatalogProductRel extends AbstractFixture implements OrderedFixtureInterfa
              */
             $product = $this->getReference('product-2-'.$j);
             $classificationProduct2->setNmsps($nmsps);
-            $classificationProduct2->setClassification($customCategory2);
+            $classificationProduct2->setClassification($customCategory2->getId());
             $classificationProduct2->setProduct($product);
             $manager->persist($classificationProduct2);
         }
@@ -84,7 +84,7 @@ class CatalogProductRel extends AbstractFixture implements OrderedFixtureInterfa
              */
             $product = $this->getReference('product-3-'.$j);
             $classificationProduct3->setNmsps($nmsps);
-            $classificationProduct3->setClassification($customCategory3);
+            $classificationProduct3->setClassification($customCategory3->getId());
             $classificationProduct3->setProduct($product);
             $manager->persist($classificationProduct3);
         }

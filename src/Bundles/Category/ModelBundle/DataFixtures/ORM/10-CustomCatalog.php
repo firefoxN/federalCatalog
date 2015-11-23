@@ -65,6 +65,11 @@ class CustomCatalogFixtures extends AbstractFixture implements OrderedFixtureInt
         $manager->persist($apple);
         $this->addReference('apple', $apple);
 
+        $appleDelicious = new CustomCatalog();
+        $appleDelicious->setTitle('Delicious');
+        $appleDelicious->setParent($apple);
+        $manager->persist($appleDelicious);
+
         $vegetables = new CustomCatalog();
         $vegetables->setTitle('Vegetables');
         $vegetables->setParent($food);

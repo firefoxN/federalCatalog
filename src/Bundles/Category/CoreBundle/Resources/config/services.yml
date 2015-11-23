@@ -1,0 +1,21 @@
+services:
+    godfather:
+        class: PUGX\Godfather\Godfather
+        arguments: [@container, 'godfather']
+
+    godfather.context:
+        class: PUGX\Godfather\Context\Context
+
+    container:
+        class: PUGX\Godfather\Container\SymfonyContainerBuilder
+        arguments: [@service_container]
+
+    manager.custom_catalog:
+        class: Bundles\Category\CoreBundle\Services\CustomClassificationManager
+        arguments:
+            - @doctrine.orm.entity_manager
+
+    manager.classification_product:
+            class: Bundles\Category\CoreBundle\Services\ClassificationProductManager
+            arguments:
+                - @doctrine.orm.entity_manager

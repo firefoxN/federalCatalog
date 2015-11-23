@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="classification_product", uniqueConstraints={
  *      @UniqueConstraint(columns={"product_id", "nmsps"})
  * })
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Bundles\Category\ModelBundle\Repository\ClassificationProductRepository")
  */
 class ClassificationProduct
 {
@@ -37,11 +37,9 @@ class ClassificationProduct
     private $product;
 
     /**
-     * @var ArrayCollection
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Bundles\Category\ModelBundle\Entity\AbstractClassification",
-     * inversedBy="classificationProducts")
-     * @ORM\JoinColumn(name="classification_id", referencedColumnName="id", nullable=false)
+     * @ORM\Column(name="classification_id", type="integer", nullable=false)
      */
     private $classification;
 
@@ -117,11 +115,11 @@ class ClassificationProduct
     /**
      * Set classification
      *
-     * @param AbstractClassification $classification
+     * @param integer $classification
      *
      * @return ClassificationProduct
      */
-    public function setClassification(AbstractClassification $classification)
+    public function setClassification($classification)
     {
         $this->classification = $classification;
 
@@ -131,7 +129,7 @@ class ClassificationProduct
     /**
      * Get classification
      *
-     * @return AbstractClassification
+     * @return integer
      */
     public function getClassification()
     {

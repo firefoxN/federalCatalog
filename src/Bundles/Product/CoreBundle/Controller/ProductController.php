@@ -9,19 +9,19 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * Class ProductController
  *
- * @package Bundles\Product\CoreBundle\Controller
+ * @Route("/products")
  */
 class ProductController extends Controller
 {
     /**
-     * @Route("/products")
+     * @Route("/")
      * @Template()
      *
      * @return array
      */
     public function indexAction()
     {
-        return array(// ...
+        return array(
         );
     }
 

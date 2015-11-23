@@ -1,0 +1,16 @@
+{% extends 'WebBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ classification.title }}
+{% endblock %}
+
+{% block bundleContent %}
+    <h1>{{ classification.title }}</h1>
+
+    {% if leaves %}
+        {{ include('CategoryCoreBundle:Catalog:_products.html.twig', {pagination: pagination}) }}
+    {% else %}
+        {{ include('CategoryCoreBundle:Catalog:_categories.html.twig', {pagination: pagination}) }}
+    {% endif %}
+{% endblock %}
+

@@ -18,7 +18,7 @@ class ProductControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/products');
+        $crawler = $client->request('GET', '/products/');
 
         $this->assertTrue($client->getResponse()->isSuccessful(), 'The response was not successfull');
     }
