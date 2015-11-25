@@ -1,0 +1,28 @@
+parameters:
+    vendor_admin.class: Bundles\Product\CoreBundle\Admin\VendorAdmin
+    vendor_entity.class: Bundles\Product\ModelBundle\Entity\Vendor
+    product_admin.class: Bundles\Product\CoreBundle\Admin\ProductAdmin
+    product_entity.class: Bundles\Product\ModelBundle\Entity\Product
+
+services:
+    sonata.admin.vendor:
+        class: %vendor_admin.class%
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Vendor" }
+        arguments:
+            - ~
+            - %vendor_entity.class%
+            - ~
+        calls:
+            - [ setTranslationDomain, [ProductCoreBundle]]
+
+    sonata.admin.product:
+        class: %product_admin.class%
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Product" }
+        arguments:
+            - ~
+            - %product_entity.class%
+            - ~
+        calls:
+            - [ setTranslationDomain, [ProductCoreBundle]]

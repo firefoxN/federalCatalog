@@ -63,18 +63,10 @@ class CustomCatalog extends AbstractClassification
     private $children;
 
     /**
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="ClassificationProduct", mappedBy="classification", cascade={"remove"})
-     */
-    protected $classificationProducts;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        parent::__construct();
         $this->children = new ArrayCollection();
     }
 
@@ -254,5 +246,26 @@ class CustomCatalog extends AbstractClassification
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $prefix = '';
+        for ($i=2; $i<= $this->lvl; $i++) {
+            $prefix .= '--';
+        }
+
+        return $prefix.$this->getTitle() ;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLaveledTitle()
+    {
+        return (string) $this;
     }
 }

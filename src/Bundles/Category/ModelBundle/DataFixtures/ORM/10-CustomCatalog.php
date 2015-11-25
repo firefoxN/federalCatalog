@@ -25,13 +25,19 @@ class CustomCatalogFixtures extends AbstractFixture implements OrderedFixtureInt
     {
         $faker = FakerFactory::create('ru_RU');
 
+        $mainRoot = new CustomCatalog();
+        $mainRoot->setTitle('== Корневой элемент ==');
+        $manager->persist($mainRoot);
+
         $dishes = new CustomCatalog();
         $dishes->setTitle('Dishes');
+        $dishes->setParent($mainRoot);
         $manager->persist($dishes);
         $this->addReference('dishes', $dishes);
 
         $fakerRoot = new CustomCatalog();
         $fakerRoot->setTitle($faker->sentence(2));
+        $fakerRoot->setParent($mainRoot);
         $manager->persist($fakerRoot);
 
         for ($i=0; $i<3; $i++) {
@@ -50,6 +56,7 @@ class CustomCatalogFixtures extends AbstractFixture implements OrderedFixtureInt
 
         $food = new CustomCatalog();
         $food->setTitle('Food');
+        $food->setParent($mainRoot);
         $manager->persist($food);
         $this->addReference('food', $food);
 

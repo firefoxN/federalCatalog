@@ -36,22 +36,22 @@
         <!-- Tab panes -->
         <div class="tab-content subMainMenu">
             {% for key,subMenuValues in subMenuDatas %}
-                {% set prevLvl = 1 %}
+                {% set prevLvl = 2 %}
                 <div class="tab-pane" id="tab_0{{ key }}">
                     <!-- строка подменю -->
                     <div class="row rowSubMenu">
                         <div>
                             {% for subMenuData in subMenuValues %}
-                                {% if prevLvl != subMenuData.lvl and subMenuData.lvl == 1 %}
+                                {% if prevLvl != subMenuData.lvl and subMenuData.lvl == 2 %}
                                         </ul>
                                     </div>
                                 {% endif %}
-                                {% if subMenuData.lvl == 1 %}
+                                {% if subMenuData.lvl == 2 %}
                                     <div class="col-md-3">
                                         <span class="titleSubMenu">{{ subMenuData.title }}</span>
                                         <ul class="inside-list" role="menu">
                                 {% endif %}
-                                {% if subMenuData.lvl == 2 %}
+                                {% if subMenuData.lvl == 3 %}
                                     <li>
                                         <a href="{{ path('bundles_category_core_catalog_showcustomcategory', {slug: subMenuData.slug}) }}">
                                             {{ subMenuData.title }}

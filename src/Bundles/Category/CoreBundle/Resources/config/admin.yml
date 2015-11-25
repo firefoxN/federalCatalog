@@ -1,0 +1,15 @@
+parameters:
+    customclassification_admin.class: Bundles\Category\CoreBundle\Admin\CustomClassificationAdmin
+    customclassification_entity.class: Bundles\Category\ModelBundle\Entity\CustomCatalog
+
+services:
+    sonata.admin.customclassification:
+        class: %customclassification_admin.class%
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Classifications", label: "CustomClassification" }
+        arguments:
+            - ~
+            - %customclassification_entity.class%
+            - ~
+        calls:
+            - [ setTranslationDomain, [CategoryCoreBundle]]

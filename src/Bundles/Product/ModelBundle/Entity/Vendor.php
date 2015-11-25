@@ -176,4 +176,12 @@ class Vendor extends Timestampable
     {
         return $this->products;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

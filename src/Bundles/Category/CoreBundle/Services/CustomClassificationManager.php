@@ -98,7 +98,7 @@ class CustomClassificationManager implements ClassificationInterface
      */
     public function getRootNodes()
     {
-        $roots = $this->getCustomCatalogRepository()->getRootNodes();
+        $roots = $this->getCustomCatalogRepository()->getPseudoRootNodes();
 
         return $roots;
     }
@@ -127,6 +127,18 @@ class CustomClassificationManager implements ClassificationInterface
     public function getEntityClassName()
     {
         return self::ENTITY_CLASS_NAME;
+    }
+
+    /**
+     * Get custom category's lives list (we have to add products only into lives)
+     *
+     * @return array
+     */
+    public function getListOfAvailableForAddingCategories()
+    {
+        $arrayLives = $this->getCustomCatalogRepository()->getAvailableForAddingCategoriesQuery()->getArrayResult();
+
+        return $arrayLives;
     }
 
     /**

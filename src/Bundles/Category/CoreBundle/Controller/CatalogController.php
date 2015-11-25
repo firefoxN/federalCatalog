@@ -32,8 +32,8 @@ class CatalogController extends Controller
             /**
              * @var CustomCatalog $root
              */
-            $arrData[$root->getRoot()] = $this->getCustomClassificationManager()
-                ->getArrayTreeForItemUpLvlExceptSelf($root, 3);
+            $arrData[$root->getId()] = $this->getCustomClassificationManager()
+                ->getArrayTreeForItemUpLvlExceptSelf($root, 4);
         }
 
         return array(
