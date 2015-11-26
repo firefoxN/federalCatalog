@@ -10,6 +10,6 @@ services:
         arguments:
             - ~
             - %customclassification_entity.class%
-            - ~
+            - CategoryCoreBundle:CatalogAdmin
         calls:
             - [ setTranslationDomain, [CategoryCoreBundle]]

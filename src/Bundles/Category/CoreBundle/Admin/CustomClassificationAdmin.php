@@ -3,6 +3,8 @@
 namespace Bundles\Category\CoreBundle\Admin;
 
 
+use Bundles\Category\ModelBundle\Repository\CustomCatalogRepository;
+use Doctrine\ORM\EntityManager;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -77,5 +79,45 @@ class CustomClassificationAdmin extends Admin
         $listMapper
             ->addIdentifier('laveled_title', null, array('sortable' => false, 'label' => 'Заголовок категории'))
             ->add('slug');
+    }
+
+    /**
+     * @param mixed $object
+     *
+     * @return void
+     */
+    public function postPersist($object)
+    {
+        /**
+         * @var EntityManager $em
+         */
+        $em = $this->modelManager->getEntityManager($object);
+        /**
+         * @var CustomCatalogRepository $repo
+         */
+        $repo = $em->getRepository('CategoryModelBundle:CustomCatalog');
+        $repo->verify();
+        $repo->recover();
+        $em->flush();
+    }
+
+    /**
+     * @param mixed $object
+     *
+     * @return void
+     */
+    public function postUpdate($object)
+    {
+        /**
+         * @var EntityManager $em
+         */
+        $em = $this->modelManager->getEntityManager($object);
+        /**
+         * @var CustomCatalogRepository $repo
+         */
+        $repo = $em->getRepository('CategoryModelBundle:CustomCatalog');
+        $repo->verify();
+        $repo->recover();
+        $em->flush();
     }
 }
