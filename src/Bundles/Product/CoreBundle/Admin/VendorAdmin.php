@@ -31,6 +31,7 @@ class VendorAdmin extends Admin
                     'multiple' => true,
                     'choices' => $arrUsers,
                     'data' => $this->getSelectedUsers(),
+                    'required' => false,
                     'label' => 'Пользователь',
                 )
             )
