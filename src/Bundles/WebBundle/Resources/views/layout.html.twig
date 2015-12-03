@@ -59,8 +59,23 @@
             <!-- вход/регистрация -->
             <div class="col-md-3 col-sm-3 col-xs-12 buttons">
                 <div class="enter-buttons">
-                    <div class="enter dark-blue">Вход</div>
-                    <div class="reg">Регистрация</div>
+                    {% if app.user %}
+                        <div class="enter dark-blue">
+                            <a href="{{ path('sonata_user_security_logout') }}">Выход</a>
+                        </div>
+                        <div class="reg">
+                            {% if is_granted('ROLE_SONATA_ADMIN_PRODUCT_STAFF') or is_granted('ROLE_SUPER_ADMIN') %}
+                                <a href="{{ path('sonata_admin_dashboard') }}">Админ. часть</a>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="enter dark-blue">
+                            <a href="{{ path('sonata_user_security_login') }}">Вход</a>
+                        </div>
+                        <div class="reg">
+                            <a href="{{ path('sonata_user_registration_register') }}">Регистрация</a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             <!-- /вход/регистрация -->
