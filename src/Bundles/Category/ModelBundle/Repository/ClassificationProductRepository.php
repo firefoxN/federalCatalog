@@ -2,6 +2,7 @@
 
 namespace Bundles\Category\ModelBundle\Repository;
 
+use Bundles\Product\ModelBundle\Entity\Product;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
@@ -68,6 +69,38 @@ class ClassificationProductRepository extends EntityRepository
             );
 
         return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    /**
+     * @param string  $nmsps Namespace of strategy
+     * @param Product $prod
+     *
+     * @return \Doctrine\ORM\Query
+     */
+    public function getCategoryByProductQuery($nmsps, $prod)
+    {
+        return $this->getCategoryByProductQueryBuilder($nmsps, $prod)->getQuery();
+    }
+
+    /**
+     * @param string  $nmsps Namespace of strategy
+     * @param Product $prod
+     *
+     * @return QueryBuilder
+     */
+    public function getCategoryByProductQueryBuilder($nmsps, $prod)
+    {
+        $qb = $this->getQueryBuilder()
+            ->where('cp.nmsps = :curnmsps')
+            ->andWhere('cp.product = :prod')
+            ->setParameters(
+                [
+                    'curnmsps' => $nmsps,
+                    'prod'     => $prod,
+                ]
+            );
+
+        return $qb;
     }
 
     /**

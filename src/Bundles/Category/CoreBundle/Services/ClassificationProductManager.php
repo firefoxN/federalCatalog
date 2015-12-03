@@ -10,6 +10,7 @@ namespace Bundles\Category\CoreBundle\Services;
 
 
 use Bundles\Category\ModelBundle\Repository\ClassificationProductRepository;
+use Bundles\Product\ModelBundle\Entity\Product;
 use Doctrine\ORM\EntityManager;
 
 class ClassificationProductManager
@@ -76,6 +77,20 @@ class ClassificationProductManager
     {
         $repository = $this->getClassificationProductRepository();
         $query = $repository->getAllProductsInGroupByIdQuery($nmsps, $categoryId);
+
+        return $query;
+    }
+
+    /**
+     * @param string  $nmsps   Namespace of strategy
+     * @param Product $product
+     *
+     * @return \Doctrine\ORM\Query
+     */
+    public function getCategoryByProduct($nmsps, $product)
+    {
+        $repository = $this->getClassificationProductRepository();
+        $query = $repository->getCategoryByProductQuery($nmsps, $product);
 
         return $query;
     }

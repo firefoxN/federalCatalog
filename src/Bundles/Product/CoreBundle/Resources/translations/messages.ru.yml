@@ -3,3 +3,4 @@ bundles:
         core:
             vendors: 'Поставщики'
             readmore: 'Подробнее'
+            customcategory: 'Родительская категория'

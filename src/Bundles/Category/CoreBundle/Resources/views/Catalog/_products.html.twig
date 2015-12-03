@@ -12,7 +12,9 @@
         <div class="col-md-4">
             <div class="item-products">
                 <h3>
-                    {{ article.product.title }}
+                    <a href="{{ path('bundles_product_core_product_showproduct', {slug: article.product.slug}) }}">
+                        {{ article.product.title }}
+                    </a>
                 </h3>
                 <p>
                     {{ 'bundles.category.core.list.on' | trans }}:

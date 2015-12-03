@@ -1,8 +1,14 @@
 parameters:
     vendor_manager.class: Bundles\Product\CoreBundle\Services\VendorManager
+    product_manager.class: Bundles\Product\CoreBundle\Services\ProductManager
 
 services:
     vendor_manager:
         class: %vendor_manager.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+
+    product_manager:
+        class: %product_manager.class%
         arguments:
             - @doctrine.orm.entity_manager

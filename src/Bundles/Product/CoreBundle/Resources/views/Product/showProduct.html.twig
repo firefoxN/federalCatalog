@@ -1,0 +1,16 @@
+{% extends 'WebBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ product.title }}
+{% endblock %}
+
+{% block bundleContent %}
+    <h1>{{ product.title }}</h1> <time datetime="{{ product.createdAt | date('c') }}">{{ product.createdAt | date }}</time>
+    <br>
+    <small>{{ 'bundles.product.core.customcategory' | trans }} {{ classification.title }}</small>
+
+    <p class="text-left">
+        {{ product.description }}
+    </p>
+
+{% endblock %}

@@ -1,4 +1,7 @@
 <?php
+/**
+ * @TODO допилить меню через бандл KnpMenuBundle, чтоб оно появлялось на всех страницах
+ */
 
 namespace Bundles\Category\CoreBundle\Controller;
 

@@ -50,6 +50,22 @@ class CustomClassificationManager implements ClassificationInterface
     }
 
     /**
+     * @param integer $id
+     *
+     * @return null|object
+     */
+    public function findById($id)
+    {
+        $customCategory = $this->getCustomCatalogRepository()->find($id);
+
+        if (null === $customCategory) {
+            throw new NotFoundHttpException('Category was not found.');
+        }
+
+        return $customCategory;
+    }
+
+    /**
      * Get all direct children for current node
      * If there are no children - return empty array
      *
