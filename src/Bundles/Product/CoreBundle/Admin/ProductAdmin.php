@@ -3,10 +3,13 @@
 namespace Bundles\Product\CoreBundle\Admin;
 
 
+use Application\Sonata\UserBundle\Entity\User;
 use Bundles\Category\ModelBundle\Entity\ClassificationProduct;
 use Bundles\Category\ModelBundle\Entity\CustomCatalog;
 use Bundles\Category\ModelBundle\Repository\ClassificationProductRepository;
 use Bundles\Category\ModelBundle\Repository\CustomCatalogRepository;
+use Bundles\Product\ModelBundle\Entity\VendorUser;
+use Bundles\Product\ModelBundle\Repository\VendorUserRepository;
 use Doctrine\ORM\EntityManager;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -20,6 +23,37 @@ use Sonata\AdminBundle\Model\ModelManagerInterface;
 class ProductAdmin extends Admin
 {
     protected $translationDomain = 'ProductCoreBundle';
+
+    /**
+     * @param string $context
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function createQuery($context = 'list')
+    {
+        /**
+         * @var \Doctrine\ORM\QueryBuilder $query
+         */
+        $query = parent::createQuery($context);
+
+        if (!$this->checkGranted('ROLE_SUPER_ADMIN') && $this->checkGranted('ROLE_SONATA_ADMIN_PRODUCT_EDITOR')) {
+            $currentUser = $this->getAuthUser();
+            $vendorUserEm = $this->getVendorUserEntityManager();
+            $vendorUserRepository = $this->getVendorUserRepository($vendorUserEm);
+            /**
+             * @var VendorUser $vendorUserEntity
+             */
+            $vendorUserEntity = $vendorUserRepository->findOneBy([
+                'user' => $currentUser
+            ]);
+
+            $vendor = $vendorUserEntity->getVendor();
+
+            $query->andWhere($query->getRootAliases()[0].'.vendor = '.$vendor->getId());
+        }
+
+        return $query;
+    }
 
     /**
      * Fields to be shown on create/edit forms
@@ -76,6 +110,16 @@ class ProductAdmin extends Admin
             ->add('slug')
             ->add('vendor')
             ->add('price', 'currency', array('currency' => 'RUB'));
+    }
+
+    /**
+     * @param string $role
+     *
+     * @return mixed
+     */
+    private function checkGranted($role)
+    {
+        return $this->getConfigurationPool()->getContainer()->get('security.context')->isGranted($role);
     }
 
     /**
@@ -186,6 +230,48 @@ class ProductAdmin extends Admin
          * @var EntityManager $em
          */
         $em = $mm->getEntityManager('Bundles\Category\ModelBundle\Entity\ClassificationProduct');
+
+        return $em;
+    }
+
+    /**
+     * @return User
+     */
+    private function getAuthUser()
+    {
+        $usr = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
+
+        return $usr;
+    }
+
+    /**
+     * @param EntityManager $em
+     *
+     * @return VendorUserRepository
+     */
+    private function getVendorUserRepository(EntityManager $em)
+    {
+        /**
+         * @var VendorUserRepository $repository
+         */
+        $repository = $em->getRepository('ProductModelBundle:VendorUser');
+
+        return $repository;
+    }
+
+    /**
+     * @return EntityManager
+     */
+    private function getVendorUserEntityManager()
+    {
+        /**
+         * @var ModelManagerInterface $mm
+         */
+        $mm = $this->getModelManager();
+        /**
+         * @var EntityManager $em
+         */
+        $em = $mm->getEntityManager('Bundles\Product\ModelBundle\Entity\VendorUser');
 
         return $em;
     }

@@ -24,12 +24,16 @@ class AppKernel extends Kernel
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             // If you haven't already, add the storage bundle
             // This example uses SonataDoctrineORMAdmin
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             // Then add SonataAdminBundle
             new Sonata\AdminBundle\SonataAdminBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             //my own bundles
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Bundles\Product\CoreBundle\ProductCoreBundle(),
             new Bundles\Product\ModelBundle\ProductModelBundle(),
             new Bundles\Category\CoreBundle\CategoryCoreBundle(),

@@ -3,10 +3,10 @@
 namespace Bundles\Category\ModelBundle\Entity;
 
 use Bundles\Category\ModelBundle\Model\ProductInterface;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * ClassificationProduct

@@ -2,6 +2,7 @@
 
 namespace Bundles\Product\ModelBundle\Entity;
 
+use Bundles\Product\ModelBundle\Model\VendorInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -12,7 +13,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Bundles\Product\ModelBundle\Repository\VendorRepository")
  */
-class Vendor extends Timestampable
+class Vendor extends Timestampable implements VendorInterface
 {
     /**
      * @var integer
